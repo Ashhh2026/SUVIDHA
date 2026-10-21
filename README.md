@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# SUVIDHA
+=======
 # SUVIDHA — Student Feedback & Grievance Management System
 > **"Your Voice. Your Campus. Your Suvidha."**
 
@@ -272,3 +275,4 @@ For presenting this project to external examiners or faculty reviewers, follow t
    - Triage grievances, assign to faculty, and set custom SLA deadlines.
    - Manage user accounts (toggle active/disabled, role changes).
    - Inspect **Security Audit Logs** and download **Sanitized CSV Reports**.
+>>>>>>> b3c2f02 (feat: Complete SUVIDHA Student Feedback and Grievance Management System)

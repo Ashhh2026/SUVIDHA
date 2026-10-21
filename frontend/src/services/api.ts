@@ -8,8 +8,10 @@ export const setAuthToken = (token: string | null) => {
 
 export const getAuthToken = () => inMemoryToken;
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 export const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -39,7 +41,10 @@ api.interceptors.response.use(
     ) {
       originalRequest._retry = true;
       try {
-        const refreshRes = await axios.post('/api/auth/refresh', {}, { withCredentials: true });
+        const refreshUrl = API_BASE_URL.endsWith('/')
+          ? `${API_BASE_URL}auth/refresh`
+          : `${API_BASE_URL}/auth/refresh`;
+        const refreshRes = await axios.post(refreshUrl, {}, { withCredentials: true });
         if (refreshRes.data?.data?.accessToken) {
           const newToken = refreshRes.data.data.accessToken;
           setAuthToken(newToken);
